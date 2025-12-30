@@ -1,0 +1,69 @@
+/*변수*/
+$black: #000;
+$highlight: #d7fa00;
+$text-gray: rgb(160, 160, 160);
+
+/*믹스인*/
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin font($size: 14px, $weight: 400) {
+  font-size: $size;
+  font-weight: $weight;
+}
+
+/*중첩*/
+.header-container {
+  @include flex(space-between, center);
+  padding: 10px 20px;
+  background-color: $black;
+
+  ul {
+    @include flex(center, center);
+    gap: 20px;
+
+    li {
+      list-style: none;
+      @include font(13px, 400);
+    }
+  }
+}
+
+section {
+  @include flex(flex-start, flex-start);
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 40px;
+}
+
+.content-container {
+  @include flex(flex-start, flex-start, column);
+  gap: 5px;
+
+  img {
+    width: 300px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+  }
+
+  span {
+    @include font(12px);
+    color: $highlight;
+    border: 1px solid $highlight;
+    padding: 4px 5px;
+    border-radius: 3px;
+  }
+
+  div {
+    @include font(18px, 600);
+  }
+
+  p {
+    @include font(12px);
+    color: $text-gray;
+  }
+}
